@@ -1,3 +1,9 @@
+[ Citizen Query ] ──► [ RAG Pipeline ] ──► [ IBM Granite LLM ] ──► [ Simple Advice ]
+                           │                    ▲
+                           ▼                    │
+                  [ ChromaDB Vector Store ] ────┘
+                  (Municipal Policy PDFs)
+                  
 # 💧 AquaLogic RAG: Water Policy Assistant
 > **A smart assistant using IBM Granite AI to make complex water laws understandable and actionable.**
 > *A 1M1B AI for Sustainability Virtual Internship Project (SDG 6)*
