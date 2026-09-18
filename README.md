@@ -1,41 +1,121 @@
-[ Citizen Query ] ──► [ RAG Pipeline ] ──► [ IBM Granite LLM ] ──► [ Simple Advice ]
-                           │                    ▲
-                           ▼                    │
-                  [ ChromaDB Vector Store ] ────┘
-                  (Municipal Policy PDFs)
-                  
-# 💧 AquaLogic RAG: Water Policy Assistant
-> **A smart assistant using IBM Granite AI to make complex water laws understandable and actionable.**
-> *A 1M1B AI for Sustainability Virtual Internship Project (SDG 6)*
+# AquaLogic RAG: AI-Powered Water Policy Navigator
+
+**Grounding IBM Granite AI in Municipal Law for Sustainable Water Action**
+*1M1B AI for Sustainability Virtual Internship | IBM SkillsBuild | AICTE*
 
 ---
 
-## 🌍 The Problem
-Water policies are written in "legalese"—complex language that regular people and small businesses cannot understand. This leads to accidental waste and non-compliance. **AquaLogic RAG** uses AI to "read" local laws and answer questions in simple, everyday language.
+## Architecture Overview
 
-## ✨ Key Features
-1. **Jargon-to-Action Translator**: Simplifies terms like "riparian rights."
-2. **Policy Comparison Agent**: Checks if your current water usage matches local laws.
-3. **Conservation Checklist**: Generates a custom "To-Do" list based on local scarcity levels.
+AquaLogic utilizes a modular Retrieval-Augmented Generation (RAG) architecture to bridge the gap between complex legal policy and citizen-led conservation.
 
-## 🎯 SDG 6 Alignment
-*   **Target 6.1 (Access):** Helps citizens understand their legal rights to water.
-*   **Target 6.3 (Quality):** Surfaces rules for safe wastewater disposal.
-*   **Target 6.4 (Efficiency):** Drives household savings through policy-based advice.
-*   **Target 6.b (Participation):** Empowers non-technical citizens to participate in water governance.
+```text
+[ Citizen Query ] --> [ Streamlit UI ] --> [ RAG Pipeline ] --> [ IBM Granite-13B ]
+                             |                    ^                  |
+                             v                    |                  v
+                    [ ChromaDB Vector Store ] ----┘           [ Actionable Advice ]
+                    (Municipal Policy Library)
+```
 
-## 🤖 Responsible AI & Ethics
-*   **No Hallucinations:** Engineered with a strict fallback; if the answer isn't in the PDF, the AI says "I don't know."
-*   **Transparency:** Every response includes a citation (e.g., "City Bylaw 2023, Section 4.2").
+## Key Features
 
-## 📁 IBM Bob Usage Evidence (Internship Requirement)
-Following the guidelines, **IBM Bob AI** was used in the **Ideation and Planning phase**.
-- **Designed** the modular file structure.
-- **Mapped** features to SDG 6 targets.
-- **Generated** the core Python orchestration logic.
-*The `.bob` metadata folder is included in the root directory.*
+* **Jargon-to-Action Translator:** Simplifies technical legal terms such as "riparian rights" into direct, actionable instructions for non-technical users.
 
-## Setup
-1. Clone the repository.
-2. Install dependencies: `pip install -r requirements.txt`.
-3. Configure WatsonX credentials in `.env`.
+* **Policy Comparison Agent:** Provides compliance assessment of user behavior against municipal wastewater and water extraction bylaws.
+
+* **Conservation Checklist:** Generates personalized and prioritized efficiency plans based on regional scarcity tiers and legislative requirements.
+
+* **Enterprise Dashboard:** A professional Streamlit interface featuring real-time impact metrics and downloadable action plans.
+
+## SDG 6 Alignment (Clean Water and Sanitation)
+
+| Target        | Description               | Project Implementation                                            |
+| :------------ | :------------------------ | :---------------------------------------------------------------- |
+| **6.1 & 6.5** | Equitable access and IWRM | Democratizes legal knowledge for non-technical stakeholders.      |
+| **6.3**       | Wastewater Management     | Surfaces discharge standards for households and small businesses. |
+| **6.4**       | Water-use Efficiency      | Provides policy-grounded checklists to reduce urban water waste.  |
+| **6.b**       | Local Participation       | Lowers the barrier to entry for community-led water governance.   |
+
+## Responsible AI and Ethics
+
+* **Zero-Hallucination Guardrails:** The AquaLogic Sustainability Engine utilizes a strict grounding contract. If the factual basis is missing from the retrieved legal context, the system triggers a hard-stop response.
+
+* **Source Transparency:** Every AI-generated response provides a citation of the municipal code, relevant section, and page used for the reasoning.
+
+* **Metadata Evidence:** A hidden `.bob` directory is maintained in the root, containing the technical audit trail of AI-assisted planning using IBM Bob.
+
+## Project Methodology and Structure
+
+This project follows professional software engineering standards using a modular directory structure.
+
+```text
+AquaLogic-RAG/
+│
+├── src/
+│   ├── RAG logic
+│   ├── Retrieval modules
+│   └── Grounded prompt templates
+│
+├── app.py
+├── data/
+│   └── Municipal policy library
+│
+├── run_diagnostic.py
+├── configs/
+│   └── config.yaml
+├── requirements.txt
+└── README.md
+```
+
+| Component           | Description                                                                         |
+| :------------------ | :---------------------------------------------------------------------------------- |
+| `src/`              | Core RAG logic, retrieval modules, and grounded prompt templates.                   |
+| `app.py`            | Streamlit-based application dashboard.                                              |
+| `data/`             | Multi-document policy library containing domestic and industrial datasets.          |
+| `run_diagnostic.py` | Technical pipeline simulation tool for logic verification and architecture testing. |
+| `configs/`          | Centralized model and retrieval parameters.                                         |
+| `config.yaml`       | Model and retrieval configuration.                                                  |
+| `requirements.txt`  | Python dependencies required to run the project.                                    |
+
+## Setup and Usage
+
+### 1. Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 2. Execute Diagnostic Logic Proof
+
+```bash
+python run_diagnostic.py
+```
+
+### 3. Launch the Dashboard
+
+```bash
+streamlit run app.py
+```
+
+## Technology Stack
+
+* Python
+* Streamlit
+* IBM Granite
+* Retrieval-Augmented Generation (RAG)
+* ChromaDB
+* Vector Embeddings
+* Municipal Policy Documents
+* IBM SkillsBuild
+* AICTE
+* 1M1B AI for Sustainability
+
+## Project Objective
+
+AquaLogic aims to make municipal water policies easier to understand and act upon by combining Generative AI, Retrieval-Augmented Generation, and policy-grounded information retrieval.
+
+The system helps citizens and other non-technical stakeholders understand relevant water regulations and translate them into practical conservation actions.
+
+## Technical Note
+
+This repository is a technical prototype developed for the **1M1B AI for Sustainability Virtual Internship**. All AI logic is designed around the IBM Granite foundation model family, with an emphasis on grounded retrieval, source transparency, and responsible AI practices.
